@@ -9,7 +9,7 @@ export const addRide = (data) => {
             method: 'POST',
             body: JSON.stringify(data)
         })
-        // .then(res => res.json())
-        // .then(ride => dispatch({type: 'ADD_RIDE'}))
+        .then(res => res.json())
+        .then(ride => dispatch({type: 'ADD_RIDE', payload: ride}))
     }
 }
