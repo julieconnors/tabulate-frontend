@@ -7,12 +7,34 @@ class Rides extends Component {
     componentDidMount() {
         this.props.fetchRides()
     }
+
+    // filterRides() {
+    //     this.props.rides.filter(ride => ride.attributes.date === this.props.date)
+    // }
+
     render() {
-        const rides = this.props.rides.map(ride => <p key={ride.id}>{ride.id}</p>)
-        console.log(this.props.rides)
+        const filteredRides = this.props.rides.filter(ride => ride.attributes.date === this.props.date)
+        const rideList = filteredRides.map(ride => {
+            return (
+                <tr key={ride.id}>
+                    <td>{ride.attributes.horse_id}</td>
+                    <td>training option</td>
+                </tr>)
+    })
+
         return (
             <div>
-                {rides}
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Horse</td>
+                            <td>Option</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rideList}
+                    </tbody>
+                </table>
             </div>
         )
     }
