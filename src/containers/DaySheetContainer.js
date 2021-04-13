@@ -44,7 +44,7 @@ class DaySheetContainer extends Component {
                     
                         {horseList}
                 </div>
-                <Rides />
+                <Rides date={this.today()}/>
             </div>
             
         )
