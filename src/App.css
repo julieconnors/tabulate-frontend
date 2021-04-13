@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+DIV.table 
+{
+    display:table;
+}
+FORM.tr, DIV.tr
+{
+    display:table-row;
+}
+SPAN.td, SPAN.th
+{
+    display:table-cell;
+}
