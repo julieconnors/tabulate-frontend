@@ -17,7 +17,6 @@ class RideForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        debugger
         const newRide = {
             ...this.state, date: this.props.date
         }
