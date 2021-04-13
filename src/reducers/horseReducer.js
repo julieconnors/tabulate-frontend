@@ -1,10 +1,18 @@
 export default function horseReducer(state = {
-    horses: []
+    rides: [],
+    horses: [],
+    trainingOptions: []
 }, action) {
-    // debugger;
     switch (action.type) {
         case 'FETCH_HORSES':
-            return { horses: action.payload.data }
+            return { ...state, horses: action.payload.data }
+
+        case 'FETCH_TRAINING_OPTIONS':
+            return { ...state, trainingOptions: action.payload.data }
+
+        case 'FETCH_RIDES':
+            return { ...state, rides: action.payload.data }
+
         default:
             return state
     }
