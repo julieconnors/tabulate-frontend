@@ -13,6 +13,9 @@ export default function horseReducer(state = {
         case 'FETCH_RIDES':
             return { ...state, rides: action.payload.data }
 
+        case 'ADD_RIDE':
+            return { ...state, rides: [...state.rides, action.payload.data] }
+
         default:
             return state
     }
