@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RideForm from '../components/RideForm'
 import Rides from '../components/Rides'
-// import { fetchRides } from '../actions/fetchRides'
+import { fetchRides } from '../actions/fetchRides'
 import { fetchHorses } from '../actions/fetchHorses'
 import { fetchTrainingOptions } from '../actions/fetchTrainingOptions'
 
@@ -22,7 +22,7 @@ class DaySheetContainer extends Component {
     componentDidMount() {
         this.props.fetchHorses()
         this.props.fetchTrainingOptions()
-        // this.props.fetchRides()
+        this.props.fetchRides()
     }
 
     render() {
@@ -44,7 +44,7 @@ class DaySheetContainer extends Component {
                     
                         {horseList}
                 </div>
-                <Rides date={this.today()}/>
+                <Rides rides={this.props.rides} date={this.today()}/>
             </div>
             
         )
@@ -60,4 +60,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchHorses, fetchTrainingOptions })(DaySheetContainer);
+export default connect(mapStateToProps, { fetchHorses, fetchTrainingOptions, fetchRides })(DaySheetContainer);
