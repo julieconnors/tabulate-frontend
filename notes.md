@@ -3,8 +3,13 @@
 
 RIDES
  - fetch rides in container and pass to rides
- 
 
 ADD HORSE
 
 OWNER STATEMENT ROUTE
+ - filter by owner to display monthly statements
+
+ refactor:
+  - should some components be functional components?
+
+**Update Readme
