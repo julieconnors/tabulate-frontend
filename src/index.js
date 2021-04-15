@@ -22,7 +22,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <NavBar />
-      <Route path="/" component={App}/>
+      <Route exact path="/" component={App}/>
       <Route exact path="/statements" component={OwnerStatementContainer} />
     </Router>
   </Provider>,
