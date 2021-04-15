@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { fetchOwners } from '../actions/fetchOwners';
 import { connect } from 'react-redux';
+import OwnerSelect from '../components/OwnerSelect';
 class OwnerStatementContainer extends Component {
     componentDidMount() {
         this.props.fetchOwners()
     }
     render() {
-        console.log(this.props.owners)
         return (
-            <div>Owners</div>
+            <div>
+            <OwnerSelect owners={this.props.owners}/>
+            </div>
         )
     }
 }
