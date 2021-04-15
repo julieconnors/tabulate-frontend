@@ -4,14 +4,15 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import horseReducer from './reducers/horseReducer'
+// import allReducers from './reducers/allReducers'
+import appReducer from './reducers/appReducer'
 import OwnerStatementContainer from './containers/OwnerStatementContainer'
 import NavBar from './components/NavBar'
 import App from './App';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(horseReducer, 
+const store = createStore(appReducer, 
   composeEnhancers(
     applyMiddleware(thunk)
     )
