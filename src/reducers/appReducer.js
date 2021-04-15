@@ -14,10 +14,11 @@ export default function appReducer(state = {
         case 'ADD_RIDE':
             return { ...state, rides: [...state.rides, action.payload.data] }
 
-            case 'FETCH_TRAINING_OPTIONS':
+        case 'FETCH_TRAINING_OPTIONS':
             return { ...state, trainingOptions: action.payload.data } 
 
-            
+        case 'FETCH_OWNERS':
+            return { ...state, owners: action.payload.data }    
 
         default:
             return state
