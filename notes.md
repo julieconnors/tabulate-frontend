@@ -2,7 +2,8 @@
     - would that be a training option with a fee of 0?
 
 RIDES
- - fetch rides in container and pass to rides
+  - add day sheet search route and container
+
 
 ADD HORSE
 
