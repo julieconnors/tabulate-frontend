@@ -4,8 +4,8 @@ import Rides from '../components/Rides'
 import { fetchRides } from '../actions/fetchRides'
 import { fetchHorses } from '../actions/fetchHorses'
 import { fetchTrainingOptions } from '../actions/fetchTrainingOptions'
-
 import { connect } from 'react-redux';
+import HorseForm from '../components/HorseForm';
 
 class DaySheetContainer extends Component {
 
@@ -31,6 +31,8 @@ class DaySheetContainer extends Component {
         return(
             <div>
                 <h2>{this.today()}</h2>
+                <HorseForm/>
+
                 <div className='table'>
                         <div className="tr">
                             <span className="th">Horse</span>
