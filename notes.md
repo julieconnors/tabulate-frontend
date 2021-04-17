@@ -6,9 +6,11 @@ RIDES
 
 
 ADD HORSE
+  
 
 OWNER STATEMENT ROUTE
  - filter by owner to display monthly statements
+ - figure out how to send calendar dates from component back to form component
 
  refactor:
   - should some components be functional components?
