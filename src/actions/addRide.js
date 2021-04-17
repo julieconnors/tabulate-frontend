@@ -10,6 +10,6 @@ export const addRide = (data) => {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(ride => dispatch({type: 'ADD_RIDE', payload: ride}))
+        .then(ride => dispatch({ type: 'ADD_RIDE', payload: ride }))
     }
 }

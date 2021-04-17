@@ -26,7 +26,7 @@ class DaySheetContainer extends Component {
     }
 
     render() {
-        const horseList = this.props.horses.map(horse => <RideForm key={horse.id} horse={horse} date={this.today()}trainingOptions={this.props.trainingOptions}/>)
+        const horseList = this.props.horses.map(horse => <RideForm key={horse.id} horse={horse} horses={this.props.horses} date={this.today()}trainingOptions={this.props.trainingOptions}/>)
 
         return(
             <div>
