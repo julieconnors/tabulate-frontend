@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addHorse } from '../actions/addHorse';
 
 class HorseForm extends Component {
 
@@ -9,16 +11,18 @@ class HorseForm extends Component {
 
     handleChange = (event) => {
         this.setState({
-            name: event.target.value
+            [event.target.name]: event.target.value
         })
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
         // dispatch action to add horse
-        this.props.addHorse(this.state.name)
+        
+        this.props.addHorse(this.state)
         this.setState({
-            name: ""
+            name: "",
+            owner: ""
         })
     }
 
@@ -27,9 +31,9 @@ class HorseForm extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <label>Horse Name</label>
-                    <input type="text" value={this.state.name} onChange={this.handleChange}/><br></br>
+                    <input type="text" value={this.state.name} name="name" onChange={this.handleChange}/><br></br>
                     <label>Owner Name</label>
-                    <input type="text" value={this.state.owner} onChange={this.handleChange}/><br></br>
+                    <input type="text" value={this.state.owner} name="owner" onChange={this.handleChange}/><br></br>
                     <input type="submit" value="Add Horse"/>
                 </form>
             </div>
@@ -37,4 +41,4 @@ class HorseForm extends Component {
     }
 }
 
-export default HorseForm;
+export default connect(null, { addHorse })(HorseForm);
