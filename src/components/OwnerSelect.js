@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
-import Calendar from './Calendar'
+// import Calendar from './Calendar'
+import NewCalendar from './NewCalendar';
 class OwnerSelect extends Component {
 
     state = {
-        owner_id: ""
+        owner_id: 1,
+        startDate: "",
+        endDate: ""
     }   
 
-    handleSelect(){
+    handleSelect = (event) => {
+        // debugger
+        this.setState({
+            owner_id: event.target.value
+        })
 
       }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(this.state)
+        debugger
+    }
+
+    collectDateRange = (data) => {
+        // debugger
+        this.setState({
+            startDate: data.startDate,
+            endDate: data.endDate
+        })
 
     }
 
@@ -21,12 +39,13 @@ class OwnerSelect extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                 <label>Owner:</label>
-                    <select name="owners">
+                    <select name="owners" onChange={this.handleSelect}>
                         {ownerOptions}
                     </select>
-                    <Calendar />
-                    {/* <input type="date"/> */}
+                    <NewCalendar collectDateRange={this.collectDateRange}/><br></br>
+                    <input type="submit" value="Generate Statement"/>
                 </form>
+                {/* <Calendar collectDateRange={this.collectDateRange}/> */}
             </div>
         )
     }
