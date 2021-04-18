@@ -9,7 +9,7 @@ class OwnerStatementContainer extends Component {
     render() {
         return (
             <div>
-            <OwnerSelect owners={this.props.owners}/>
+                <OwnerSelect owners={this.props.owners}/>
             </div>
         )
     }
