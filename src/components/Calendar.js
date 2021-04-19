@@ -14,9 +14,7 @@ class Calendar extends Component {
     }
   }
 
-  handleSelect = (ranges) => {
-    console.log(ranges.selection);
-    
+  handleSelect = (ranges) => {    
     this.setState({
       selectionRange : {
         startDate: ranges.selection.startDate,
