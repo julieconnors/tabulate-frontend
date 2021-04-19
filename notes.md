@@ -5,14 +5,12 @@ ERRORS
   ** add error boundary to app component
 
 RIDES
-  - add day sheet search route and container
-
 
 ADD HORSE
   * handle errors
 
 OWNER STATEMENT ROUTE
- - filter by owner to display monthly statements
+- update to abstract event handling
 
  refactor:
   - should some components be functional components?
