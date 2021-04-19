@@ -20,7 +20,6 @@ class OwnerStatementForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        // this.renderRides()
         const start = new Date(this.state.startDate)
         const end = new Date(this.state.endDate)
         const ownerSelection = this.props.rides.filter(ride => ride.attributes.horse.owner_id === this.state.owner_id )
@@ -55,7 +54,7 @@ class OwnerStatementForm extends Component {
                     <Calendar collectDateRange={this.collectDateRange}/><br></br>
                     <input type="submit" value="Generate Statement"/>
                 </form>
-                { this.state.rideList ? <Statement data={this.state.rideList} /> : null }
+                { this.state.rideList ? <Statement rideList={this.state.rideList} /> : null }
             </div>
         )
     }
