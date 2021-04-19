@@ -11,5 +11,8 @@ export const addHorse = (data) => {
         })
         .then(res => res.json())
         .then(horse => dispatch({ type: 'ADD_HORSE', payload: horse }))
+        .catch(error => {
+            console.log('error', error.message)
+        })
     }
 }
