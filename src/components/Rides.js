@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 class Rides extends Component {
 
-    // filterRides() {
-    //     this.props.rides.filter(ride => ride.attributes.date === this.props.date)
-    // }
-
     render() {
         const filteredRides = this.props.rides.filter(ride => ride.attributes.date === this.props.date)
 
