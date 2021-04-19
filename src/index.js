@@ -9,6 +9,7 @@ import appReducer from './reducers/appReducer'
 import OwnerStatementContainer from './containers/OwnerStatementContainer'
 import NavBar from './components/NavBar'
 import App from './App';
+import DaySheetContainer from './containers/DaySheetContainer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -23,6 +24,7 @@ ReactDOM.render(
     <Router>
       <NavBar />
       <Route exact path="/" component={App}/>
+      <Route exact path="/day-sheet" component={DaySheetContainer} />
       <Route exact path="/statements" component={OwnerStatementContainer} />
     </Router>
   </Provider>,
