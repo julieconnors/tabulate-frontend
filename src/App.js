@@ -1,19 +1,19 @@
 import './App.css';
 import React, { Component } from 'react';
-import ErrorBoundary from './components/ErrorBoundary'
-import DaySheetContainer from './containers/DaySheetContainer';
-// import OwnerStatementContainer from './containers/OwnerStatementContainer';
+import HorseContainer from './containers/HorseContainer';
+import TrainingOptionsContainer from './containers/TrainingOptionsContainer';
+// import ErrorBoundary from './components/ErrorBoundary'
 
 class App extends Component {
 
   render() {
     return (
       <div className="App">
-        <ErrorBoundary>
+        <HorseContainer />
+        <TrainingOptionsContainer />
+        {/* <ErrorBoundary> */}
 
-        <DaySheetContainer/>
-        {/* <OwnerStatementContainer/> */}
-        </ErrorBoundary>
+        {/* </ErrorBoundary> */}
 
       </div>
     );
