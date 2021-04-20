@@ -1,9 +1,5 @@
 import { DateRangePicker } from 'react-date-range';
 import React, { Component } from 'react';
-
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
- 
 class Calendar extends Component {
 
   state = {
