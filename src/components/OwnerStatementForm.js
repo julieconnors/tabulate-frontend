@@ -50,7 +50,7 @@ class OwnerStatementForm extends Component {
                     <label>Owner:</label>
                     <select name="owners" onChange={this.handleSelect}>
                         {ownerOptions}
-                    </select>
+                    </select><br></br>
                     <Calendar collectDateRange={this.collectDateRange}/><br></br>
                     <input type="submit" value="Generate Statement"/>
                 </form>
