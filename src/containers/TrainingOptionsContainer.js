@@ -12,9 +12,10 @@ class TrainingOptionsContainer extends Component {
     
     render() {
         return (
-            <div>
-                <TrainingOptions trainingOptions={this.props.trainingOptions} />
+            <div className="container">
                 <TrainingOptionsForm/>
+
+                <TrainingOptions trainingOptions={this.props.trainingOptions} />
             </div>
         )
     }
