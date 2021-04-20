@@ -5,15 +5,14 @@ class Horses extends Component {
     render(){
         const horseList = this.props.horses.map(horse => {
             return (
-                <tr>
+                <tr key={horse.id}>
                     <td>{horse.attributes.name}</td>
                     <td>{horse.attributes.owner.name}</td>
                 </tr>
             )
         })
         return (
-        <div>
-        <h2>Horses</h2>
+        <div className="horses">
             <table>
                 <thead>
                     <tr>

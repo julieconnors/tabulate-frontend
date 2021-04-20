@@ -6,7 +6,7 @@ class TrainingOptions extends Component {
 
         const optionsList = this.props.trainingOptions.map(option => {
             return (
-                <tr>
+                <tr key={option.id}>
                     <td>{option.attributes.label}</td>
                     <td>{option.attributes.fee}</td>
                 </tr>
@@ -14,8 +14,7 @@ class TrainingOptions extends Component {
         })
 
         return (
-            <div>
-            <h2>Training Options</h2>
+            <div className="options">
             <table>
                 <thead>
                     <tr>
