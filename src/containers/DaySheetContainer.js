@@ -5,8 +5,6 @@ import { fetchRides } from '../actions/fetchRides'
 import { fetchHorses } from '../actions/fetchHorses'
 import { fetchTrainingOptions } from '../actions/fetchTrainingOptions'
 import { connect } from 'react-redux';
-// import HorseForm from '../components/horses/HorseForm';
-
 class DaySheetContainer extends Component {
 
     today(){
@@ -28,21 +26,21 @@ class DaySheetContainer extends Component {
     render() {
         const horseList = this.props.horses.map(horse => <RideForm key={horse.id} horse={horse} horses={this.props.horses} date={this.today()}trainingOptions={this.props.trainingOptions}/>)
 
-        const trainingOptionHeadings = this.props.trainingOptions.map(option => <span className="th">{option.attributes.label}</span>)
+        const trainingOptionHeadings = this.props.trainingOptions.map(option => <span className="th" key={option.id}>{option.attributes.label}</span>)
 
         return(
             <div>
-                <h2>{this.today()}</h2>
-
-                <div className='table'>
-                        <div className="tr">
-                        <span className="th">Horse</span>
-                            {trainingOptionHeadings}
-                        </div>
-                    
+                <h3>{this.today()}</h3>
+                    <div className="container">
+                        <div className='table'>
+                            <div className="tr">
+                                <span className="th">Horse</span>
+                                {trainingOptionHeadings}
+                            </div>
                         {horseList}
-                </div>
-                <Rides rides={this.props.rides} date={this.today()}/>
+                        </div>
+                            <Rides rides={this.props.rides} date={this.today()}/>
+                    </div>
             </div>
         )
     }
