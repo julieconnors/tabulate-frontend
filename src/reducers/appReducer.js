@@ -23,6 +23,9 @@ export default function appReducer(state = {
         case 'ADD_HORSE':
             return { ...state, horses: [...state.horses, action.payload.data] }
 
+        case 'ADD_TRAINING_OPTION':
+            return { ...state, trainingOptions: [...state.trainingOptions, action.payload.data]}
+
         default:
             return state
     }
