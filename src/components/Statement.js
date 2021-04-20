@@ -6,18 +6,18 @@ class Statement extends Component {
 
     componentDidMount() {
         this.props.fetchTrainingOptions()
-        
     }
 
-    sortRides = () => {
+    sortRides = (labels) => {
+        const rides = []
         // abstract by iterating through training options set by user
-        const lessons = this.props.rideList.filter(ride => ride.attributes.training_option.label === "Lesson")
-        const flatting = this.props.rideList.filter(ride => ride.attributes.training_option.label === "Flat Ride")
-        const coaching = this.props.rideList.filter(ride => ride.attributes.training_option.label === "Coaching")
-        const showing = this.props.rideList.filter(ride => ride.attributes.training_option.label === "Show Ride")
-        const jumping = this.props.rideList.filter(ride => ride.attributes.training_option.label === "Jump School")
 
-        const rides = [lessons, flatting, coaching, showing, jumping]
+        labels.map(label => {
+            let idx = this.props.rideList.filter(ride => ride.attributes.training_option.label === label) 
+            rides.push(idx)
+            return idx
+        })
+        
         return rides
     }
 
@@ -34,8 +34,10 @@ class Statement extends Component {
     }
 
     render() {
-        const trainingOptionHeadings = this.props.trainingOptions.map(option => <th>{option.attributes.label}</th>)
-        const sortedRides = this.sortRides()
+        const labels = this.props.trainingOptions.map(option => option.attributes.label)
+        const trainingOptionHeadings = this.props.trainingOptions.map(option => <th key={option.id}>{option.attributes.label}</th>)
+        const sortedRides = this.sortRides(labels)
+
         const sortedList = sortedRides.map(list => {
             if (list.length > 0) {
                 return list
@@ -46,6 +48,7 @@ class Statement extends Component {
 
         const items = sortedList.map(list => {
             if (list !== 0) {
+
                 let price = list[0].attributes.training_option.fee
                 return <td>{price * list.length}</td>
             } else {
