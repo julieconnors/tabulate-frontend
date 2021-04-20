@@ -12,10 +12,10 @@ class HorseContainer extends Component {
 
     render() {
         return (
-        <div className="container">
-            <Horses horses={this.props.horses}/>
-            <HorseForm/>
-        </div>
+            <div className="container">
+                <Horses horses={this.props.horses}/>
+                <HorseForm/>
+            </div>
         )
     }
 }

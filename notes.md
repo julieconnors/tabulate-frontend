@@ -4,14 +4,6 @@
 ERRORS
   ** add error boundary to app component
 
-RIDES
-
-ADD HORSE
-  * handle errors
-
-OWNER STATEMENT ROUTE
-- update to abstract event handling
-
  refactor:
   - should some components be functional components?
 
