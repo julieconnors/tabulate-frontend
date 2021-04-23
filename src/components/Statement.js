@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { fetchTrainingOptions } from '../actions/fetchTrainingOptions'
-
 class Statement extends Component {
-
-    componentDidMount() {
-        this.props.fetchTrainingOptions()
-    }
 
     sortRides = (labels) => {
         const rides = []
@@ -48,9 +41,8 @@ class Statement extends Component {
 
         const items = sortedList.map(list => {
             if (list !== 0) {
-
                 let price = list[0].attributes.training_option.fee
-                return <td>{price * list.length}</td>
+                return <td key={list[0].id}>{price * list.length}</td>
             } else {
                 return <td></td>
             }
@@ -58,32 +50,29 @@ class Statement extends Component {
 
         const total = this.totaler(sortedList)
 
-        return (
-            <div>
-            <table>
-                <thead>
-                    <tr>
-                        {trainingOptionHeadings}
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr> 
-                        {items}
-                        <td>{total}</td>
-                    </tr>
-                </tbody>
-            </table>
+        const divStyle = {
+            textAlign: 'center',
+        }
 
+        return (
+            <div style={divStyle}>
+                <table>
+                    <thead>
+                        <tr>
+                            {trainingOptionHeadings}
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr> 
+                            {items}
+                            <td>{total}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        trainingOptions: state.trainingOptions
-    }
-}
-
-export default connect(mapStateToProps, { fetchTrainingOptions })(Statement);
+export default Statement;
