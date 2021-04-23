@@ -14,18 +14,18 @@ class TrainingOptions extends Component {
         })
 
         return (
-            <div className="options">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Training Options</th>
-                        <th>Fee</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {optionsList}
-                </tbody>
-            </table>
+            <div className="display">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Training Options</th>
+                            <th>Fee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {optionsList}
+                    </tbody>
+                </table>
             </div>
         )
     }

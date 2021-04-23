@@ -12,7 +12,7 @@ class Horses extends Component {
             )
         })
         return (
-        <div className="horses">
+        <div className="display">
             <table>
                 <thead>
                     <tr>
