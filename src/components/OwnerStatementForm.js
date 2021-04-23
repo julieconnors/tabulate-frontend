@@ -44,8 +44,12 @@ class OwnerStatementForm extends Component {
     render() {
         const ownerOptions = this.props.owners.map(owner => <option key={owner.id} value={owner.id}>{owner.attributes.name}</option>)
 
+        const divStyle = {
+            textAlign: 'center',
+        }
+
         return (
-            <div>
+            <div style={divStyle}>
                 <form onSubmit={this.handleSubmit}>
                     <label>Owner:</label>
                     <select name="owners" onChange={this.handleSelect}>
@@ -54,7 +58,7 @@ class OwnerStatementForm extends Component {
                     <Calendar collectDateRange={this.collectDateRange}/><br></br>
                     <input type="submit" value="Generate Statement"/>
                 </form>
-                { this.state.rideList ? <Statement rideList={this.state.rideList} /> : null }
+                { this.state.rideList ? <Statement rideList={this.state.rideList} trainingOptions={this.props.trainingOptions}/> : null }
             </div>
         )
     }

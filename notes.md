@@ -6,5 +6,6 @@ ERRORS
 
  refactor:
   - should some components be functional components?
+  - should fetching happen just once
 
 **Update Readme
