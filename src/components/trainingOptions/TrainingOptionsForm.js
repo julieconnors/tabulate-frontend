@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addTrainingOption } from '../../actions/addTrainingOption';
-import Form from 'react-bootstrap/Form';
+// import Form from 'react-bootstrap/Form';
 
 class TrainingOptionsForm extends Component {
 
@@ -27,21 +27,17 @@ class TrainingOptionsForm extends Component {
 
     render() {
         return (
-            <div className="options-form">
+            <div className="form">
                 <h4>Set Pricing</h4>
-                    <Form onSubmit={this.handleSubmit}>
-                        <Form.Group>
-                            <Form.Label>Training Option</Form.Label>
+                    <form onSubmit={this.handleSubmit}>
+                            <label>Option</label>
                             <input type="text" value={this.state.label} name="label" onChange={this.handleChange} /><br></br>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Fee</Form.Label>
+                            <label>Fee</label>
                             <input type="text" value={this.state.fee} name="fee" onChange={this.handleChange} /><br></br>
-                        </Form.Group>
 
                         <input type="submit" value="Add"/>
 
-                    </Form>
+                    </form>
             </div>
         )
     }
