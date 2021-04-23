@@ -5,6 +5,20 @@ import { fetchRides } from '../actions/fetchRides'
 import { fetchHorses } from '../actions/fetchHorses'
 import { fetchTrainingOptions } from '../actions/fetchTrainingOptions'
 import { connect } from 'react-redux';
+import styled from '@emotion/styled'
+
+const DaySheet = styled.div`
+    DIV.table {
+        display:table;
+    }
+    FORM.tr, DIV.tr {
+        display:table-row;
+    }
+    SPAN.td, SPAN.th {
+        display:table-cell;
+        text-align: center;
+    }`
+
 class DaySheetContainer extends Component {
 
     today(){
@@ -24,12 +38,15 @@ class DaySheetContainer extends Component {
     }
 
     render() {
+        // const daysheet = {
+            
+        // }
         const horseList = this.props.horses.map(horse => <RideForm key={horse.id} horse={horse} horses={this.props.horses} date={this.today()}trainingOptions={this.props.trainingOptions}/>)
 
         const trainingOptionHeadings = this.props.trainingOptions.map(option => <span className="th" key={option.id}>{option.attributes.label}</span>)
 
         return(
-            <div>
+            <DaySheet>
                 <h3>{this.today()}</h3>
                     <div className="container">
                         <div className='table'>
@@ -41,7 +58,7 @@ class DaySheetContainer extends Component {
                         </div>
                             <Rides rides={this.props.rides} date={this.today()}/>
                     </div>
-            </div>
+            </DaySheet>
         )
     }
     
