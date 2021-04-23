@@ -3,7 +3,27 @@ import TrainingOptions from '../components/trainingOptions/TrainingOptions';
 import TrainingOptionsForm from '../components/trainingOptions/TrainingOptionsForm';
 import { connect } from 'react-redux';
 import { fetchTrainingOptions } from '../actions/fetchTrainingOptions';
+import styled from '@emotion/styled'
 
+const DisplayDiv = styled.div`
+    background-color: green;
+    text-align: center;
+    display: flex;
+
+    .form {
+        background-color: blue;
+        width: 60%;
+        margin: 2%;
+    }
+
+    .display {
+        color: navy;
+        text-align: center;
+        padding: 2%;
+        width: 30%;
+        margin: 5%;
+    }
+`
 class TrainingOptionsContainer extends Component {
     
     componentDidMount() {
@@ -12,11 +32,10 @@ class TrainingOptionsContainer extends Component {
     
     render() {
         return (
-            <div className="container">
+            <DisplayDiv className="container">
                 <TrainingOptionsForm/>
-
                 <TrainingOptions trainingOptions={this.props.trainingOptions} />
-            </div>
+            </DisplayDiv>
         )
     }
 }
