@@ -9,3 +9,7 @@ ERRORS
   - should fetching happen just once
 
 **Update Readme
+
+**stretch goals: 
+  - include ride update
+  - provide option to go back to a previous date and update rides

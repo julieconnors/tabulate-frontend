@@ -6,22 +6,26 @@ import { fetchHorses } from '../actions/fetchHorses'
 import styled from '@emotion/styled'
 
 const HorseDiv = styled.div`
-    background-color: red;
+    background-color: #2F5061;
     text-align: center;
     display: flex;
 
     .display {
-        color: navy;
-        text-align: center;
+        color: #F4EAE6;
+        text-align: right;
         padding: 2%;
         width: 30%;
         margin: 5%;
+        td {
+            width: 150px;
+        }
     }
 
     .form {
         margin: 2%;
+        padding: 5%;
         width: 60%;
-        background-color: blue;
+        background-color: #F4EAE6;
     }
 `
 

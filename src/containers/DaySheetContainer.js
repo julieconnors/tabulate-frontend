@@ -7,17 +7,28 @@ import { fetchTrainingOptions } from '../actions/fetchTrainingOptions'
 import { connect } from 'react-redux';
 import styled from '@emotion/styled'
 
-const DaySheet = styled.div`
+const DaySheet = styled.div`;
+    background-color: #F4EAE6;
+    text-align: center;
+    padding: 1%;
     DIV.table {
         display:table;
+        background-color: #E57F84;
+        padding: 1%
     }
     FORM.tr, DIV.tr {
         display:table-row;
     }
-    SPAN.td, SPAN.th {
+    SPAN.td {
         display:table-cell;
         text-align: center;
-    }`
+    }
+    SPAN.th {
+        display:table-cell;
+        font-weight: bold;
+        text-align: center;
+    }
+`
 
 class DaySheetContainer extends Component {
 
@@ -38,9 +49,6 @@ class DaySheetContainer extends Component {
     }
 
     render() {
-        // const daysheet = {
-            
-        // }
         const horseList = this.props.horses.map(horse => <RideForm key={horse.id} horse={horse} horses={this.props.horses} date={this.today()}trainingOptions={this.props.trainingOptions}/>)
 
         const trainingOptionHeadings = this.props.trainingOptions.map(option => <span className="th" key={option.id}>{option.attributes.label}</span>)

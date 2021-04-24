@@ -5,6 +5,16 @@ import { fetchTrainingOptions } from '../actions/fetchTrainingOptions'
 
 import { connect } from 'react-redux';
 import OwnerStatementForm from '../components/OwnerStatementForm';
+import styled from '@emotion/styled'
+
+const StatementDisplay = styled.div`
+    background-color: #2F5061;
+    color: #F4EAE6;
+    padding: 2%;
+    table {
+        text-align: center;
+    }
+`
 class OwnerStatementContainer extends Component {
     
     componentDidMount() {
@@ -15,9 +25,9 @@ class OwnerStatementContainer extends Component {
     
     render() {
         return (
-            <div>
+            <StatementDisplay>
                 <OwnerStatementForm owners={this.props.owners} rides={this.props.rides} trainingOptions={this.props.trainingOptions}/>
-            </div>
+            </StatementDisplay>
         )
     }
 }

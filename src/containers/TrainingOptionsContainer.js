@@ -6,22 +6,26 @@ import { fetchTrainingOptions } from '../actions/fetchTrainingOptions';
 import styled from '@emotion/styled'
 
 const DisplayDiv = styled.div`
-    background-color: green;
+    background-color: #4297A0;
     text-align: center;
     display: flex;
 
     .form {
-        background-color: blue;
+        background-color: #F4EAE6;
         width: 60%;
         margin: 2%;
+        padding: 5%;
     }
 
     .display {
-        color: navy;
-        text-align: center;
+        color: #F4EAE6;
+        text-align: left;
         padding: 2%;
         width: 30%;
         margin: 5%;
+        td {
+            width: 150px;
+        }
     }
 `
 class TrainingOptionsContainer extends Component {

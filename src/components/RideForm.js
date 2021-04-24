@@ -21,9 +21,12 @@ class RideForm extends Component {
             ...this.state, date: this.props.date
         }
         this.props.addRide(newRide)
+        
         let horse = this.props.horses.find(horse => horse.id === this.state.horse_id)
-        let idx = parseInt(this.state.training_option_id) - 1
-        document.querySelector(`span.td input#${horse.attributes.name}${idx}`).checked = false
+
+        document.getElementById(horse.id).disabled = true
+        const form = document.querySelectorAll(`span.${horse.attributes.name} > input`);
+        form.forEach(formElement => formElement.disabled = true);
         this.setState({
             training_option_id: "",
             horse_id: ""
@@ -34,8 +37,10 @@ class RideForm extends Component {
 
         const optionsBoxes = this.props.trainingOptions.map((option, index) => {
             return (
-                <span className="td" key={option.id} title={this.props.horse.id}> {/* here id is set to the horses id, so I can handle change with event.target.parent.id */}
-                    <input onChange={this.handleChange} type="radio" name="training" id={this.props.horse.attributes.name+index} horse_id={this.props.horse.id} value={option.id}/> {/* here horse id is just so I can verify that the form is generate a row for each horse*/}
+                <span className="td" key={option.id}> {/* title is set to the horses id, so I can handle change with event.target.parent.id */}
+                    <span className={this.props.horse.attributes.name} title={this.props.horse.id}>
+                        <input onChange={this.handleChange} type="radio" name="training" value={option.id}/>
+                    </span>
                 </span>)
             })
         
@@ -43,7 +48,7 @@ class RideForm extends Component {
             <form className="tr" name={this.props.horse.name}>
                 <span className="td">{this.props.horse.attributes.name}</span>               
                     {optionsBoxes}
-                <span className="td"><input onClick={this.handleSubmit} type="submit" value="Save"/></span>
+                <span className="td"><input onClick={this.handleSubmit} type="submit" id={this.props.horse.id} value="Save"/></span>
             </form>
            
         )

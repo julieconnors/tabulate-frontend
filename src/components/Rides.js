@@ -1,4 +1,17 @@
 import React, { Component } from 'react';
+import styled from '@emotion/styled'
+
+const TodaysRides = styled.div`;
+    background-color: #2F5061;
+    color: #F4EAE6;
+    text-align: center;
+    margin: 5%;
+    padding: 2%;
+    .table {
+        width: 50%;
+        margin-left: 25%;
+    }
+`
 class Rides extends Component {
 
     render() {
@@ -6,20 +19,18 @@ class Rides extends Component {
 
         const rideList = filteredRides.map(ride => {
             return (
-                <tr key={ride.id} className="todays-rides">
-                    <td>{ride.attributes.horse.name}</td>
-                    <td>{ride.attributes.training_option.label}</td>
-                </tr>)
+                <div className="tr" key={ride.id}>
+                    <span className='td'>{ride.attributes.horse.name}</span>
+                    <span className='td'>{ride.attributes.training_option.label}</span>
+                </div>)
     })
         return (
-            <div className='rides'>
-                <h4>Today's Rides</h4>
-                <table>
-                    <tbody>
+            <TodaysRides>
+                <h4>Today</h4>
+                <div className='table'>
                         {rideList}
-                    </tbody>
-                </table>
-            </div>
+                </div>
+            </TodaysRides>
         )
     }
 }

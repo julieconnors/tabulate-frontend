@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import styled from '@emotion/styled'
+
+const DivStyle = styled.div`
+    background-color: #E57F84;
+    margin: 2%;
+    padding: 5%;
+`
 class Statement extends Component {
 
     sortRides = (labels) => {
@@ -50,13 +57,9 @@ class Statement extends Component {
 
         const total = this.totaler(sortedList)
 
-        const divStyle = {
-            textAlign: 'center',
-        }
-
         return (
-            <div style={divStyle}>
-                <table>
+            <DivStyle>
+                <table className='container'>
                     <thead>
                         <tr>
                             {trainingOptionHeadings}
@@ -70,7 +73,7 @@ class Statement extends Component {
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </DivStyle>
         )
     }
 }
