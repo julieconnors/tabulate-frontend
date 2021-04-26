@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class Horses extends Component {
 
     render(){
+        console.log(this.props.horses)
         const horseList = this.props.horses.map(horse => {
             return (
                 <tr key={horse.id}>
