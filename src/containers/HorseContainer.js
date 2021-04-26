@@ -51,4 +51,12 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchHorses })(HorseContainer);
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchHorses: () => {
+            dispatch(fetchHorses())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HorseContainer);

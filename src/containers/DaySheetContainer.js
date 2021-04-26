@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import RideForm from '../components/RideForm'
-import Rides from '../components/Rides'
+import RideForm from '../components/rides/RideForm'
+import Rides from '../components/rides/Rides'
 import { fetchRides } from '../actions/fetchRides'
 import { fetchHorses } from '../actions/fetchHorses'
-import { fetchTrainingOptions } from '../actions/fetchTrainingOptions'
+import { fetchServices } from '../actions/fetchServices'
 import { connect } from 'react-redux';
 import styled from '@emotion/styled'
 
@@ -44,14 +44,14 @@ class DaySheetContainer extends Component {
 
     componentDidMount() {
         this.props.fetchHorses()
-        this.props.fetchTrainingOptions()
+        this.props.fetchServices()
         this.props.fetchRides()
     }
 
     render() {
-        const horseList = this.props.horses.map(horse => <RideForm key={horse.id} horse={horse} horses={this.props.horses} date={this.today()}trainingOptions={this.props.trainingOptions}/>)
+        const horseList = this.props.horses.map(horse => <RideForm key={horse.id} horse={horse} horses={this.props.horses} date={this.today()} services={this.props.services}/>)
 
-        const trainingOptionHeadings = this.props.trainingOptions.map(option => <span className="th" key={option.id}>{option.attributes.label}</span>)
+        const servicesHeadings = this.props.services.map(option => <span className="th" key={option.id}>{option.attributes.label}</span>)
 
         return(
             <DaySheet>
@@ -60,7 +60,7 @@ class DaySheetContainer extends Component {
                         <div className='table'>
                             <div className="tr">
                                 <span className="th">Horse</span>
-                                {trainingOptionHeadings}
+                                {servicesHeadings}
                             </div>
                         {horseList}
                         </div>
@@ -75,9 +75,18 @@ class DaySheetContainer extends Component {
 const mapStateToProps = state => {
     return { 
         horses: state.horses,
-        trainingOptions: state.trainingOptions,
+        services: state.services,
         rides: state.rides
     }
 }
 
-export default connect(mapStateToProps, { fetchHorses, fetchTrainingOptions, fetchRides })(DaySheetContainer);
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         fetchHorses: () => {
+//             dispatch(fetchHorses())
+//         }
+//         // fetchTrainingOptions: 
+//     }
+// }
+
+export default connect(mapStateToProps, { fetchHorses, fetchServices, fetchRides })(DaySheetContainer);
