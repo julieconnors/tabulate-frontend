@@ -1,6 +1,6 @@
 export function addRide(data) {
     return (dispatch) => {
-        fetch('http://localhost:5500/api/v1/rides', {
+        fetch('http://localhost:3001/api/v1/rides', {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
