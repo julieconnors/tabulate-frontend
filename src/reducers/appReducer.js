@@ -1,9 +1,10 @@
 export default function appReducer(state = {
     horses: [],
-    trainingOptions: [],
+    services: [],
     rides: [],
     owners: []
 }, action) {
+
     switch (action.type) {
         case 'FETCH_HORSES':
             return { ...state, horses: action.payload.data}
@@ -14,8 +15,8 @@ export default function appReducer(state = {
         case 'ADD_RIDE':
             return { ...state, rides: [...state.rides, action.payload.data] }
 
-        case 'FETCH_TRAINING_OPTIONS':
-            return { ...state, trainingOptions: action.payload.data } 
+        case 'FETCH_SERVICES':
+            return { ...state, services: action.payload.data } 
 
         case 'FETCH_OWNERS':
             return { ...state, owners: action.payload.data }  
@@ -24,7 +25,7 @@ export default function appReducer(state = {
             return { ...state, horses: [...state.horses, action.payload.data] }
 
         case 'ADD_TRAINING_OPTION':
-            return { ...state, trainingOptions: [...state.trainingOptions, action.payload.data]}
+            return { ...state, services: [...state.services, action.payload.data]}
 
         default:
             return state
