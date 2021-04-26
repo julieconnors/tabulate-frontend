@@ -1,5 +1,4 @@
-export const addRide = (data) => {
-
+export function addRide(data) {
     return (dispatch) => {
         fetch('http://localhost:5500/api/v1/rides', {
             headers: {
