@@ -34,23 +34,21 @@ class RideForm extends Component {
     }
 
     render() {
-
         const optionsBoxes = this.props.services.map((option) => {
             return (
-                <span className="td" key={option.id}> {/* title is set to the horses id, so I can handle change with event.target.parent.id */}
-                    <span className={this.props.horse.attributes.name} title={this.props.horse.id}>
-                        <input onChange={this.handleChange} type="radio" name="training" value={option.id}/>
-                    </span>
-                </span>)
+                    <span className="td" key={option.id}> {/* title is set to the horses id, so I can handle change with event.target.parent.id */}
+                        <span className={this.props.horse.attributes.name} title={this.props.horse.id}>
+                            <input onChange={this.handleChange} type="radio" name="training" value={option.id}/>
+                        </span>
+                    </span>)
             })
         
         return (
             <form className="tr" name={this.props.horse.name}>
-                <span className="td">{this.props.horse.attributes.name}</span>               
-                    {optionsBoxes}
+                <span className="td">{this.props.horse.attributes.name}</span>   
+                    {optionsBoxes}            
                 <span className="td"><input onClick={this.handleSubmit} type="submit" id={this.props.horse.id} value="Save"/></span>
             </form>
-           
         )
     }
 }
