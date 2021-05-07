@@ -80,13 +80,4 @@ const mapStateToProps = state => {
     }
 }
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         fetchHorses: () => {
-//             dispatch(fetchHorses())
-//         }
-//         // fetchTrainingOptions: 
-//     }
-// }
-
 export default connect(mapStateToProps, { fetchHorses, fetchServices, fetchRides })(DaySheetContainer);

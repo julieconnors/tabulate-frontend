@@ -9,6 +9,7 @@ class HorseForm extends Component {
         owner: ""
     }
 
+    // arrow function syntax binds this to HorseForm component instead of handleChange function context
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -19,7 +20,8 @@ class HorseForm extends Component {
         event.preventDefault()
         // dispatch action to add horse
         
-        this.props.addHorse(this.state)
+        this.props.addHorse(this.state) 
+        // calling action creator to dispatch 
         this.setState({
             name: "",
             owner: ""
@@ -44,4 +46,5 @@ class HorseForm extends Component {
     }
 }
 
+// instead of mapping dispatch to props, I'm using connect to pass the action creator object which I'll then access via this.props
 export default connect(null, { addHorse })(HorseForm);

@@ -52,6 +52,7 @@ class StatementForm extends Component {
                         {ownerOptions}
                     </select><br></br>
                     <Calendar collectDateRange={this.collectDateRange}/><br></br>
+                    <br></br>
                     <input type="submit" value="Generate Statement"/>
                 </form>
                 { this.state.rideList ? <Statement rideList={this.state.rideList} services={this.props.services}/> : null }

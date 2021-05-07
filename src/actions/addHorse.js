@@ -1,4 +1,5 @@
 export function addHorse(data) {
+    // pass dispatch function to dispatch the action object to store after post fetch has resolved
     return (dispatch) => {
         fetch('http://localhost:3001/api/v1/horses', {
             headers: {

@@ -28,7 +28,6 @@ const HorseDiv = styled.div`
         background-color: #F4EAE6;
     }
 `
-
 class HorseContainer extends Component {
 
     componentDidMount() {
@@ -51,6 +50,10 @@ const mapStateToProps = state => {
     }
 }
 
+// connect provides access to redux's dispatch function
+// dispatch is passed to mapDispatchToProps
+// mapDispatchToProps returns an object with a fetchHorses key set to an anonymous arrow function 
+// which calls the dispatch function with the return value of the fetchHorses action creator
 const mapDispatchToProps = dispatch => {
     return {
         fetchHorses: () => {

@@ -17,12 +17,17 @@ class RideForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+
+        // create ride object with state updated from onChange plus today's date
         const newRide = {
             ...this.state, date: this.props.date
         }
+
+        // pass ride object to action creator
         this.props.addRide(newRide)
         
-        let horse = this.props.horses.find(horse => horse.id === this.state.horse_id)
+        // find horse where id matches state.horse_id from form
+        const horse = this.props.horses.find(horse => horse.id === this.state.horse_id)
 
         document.getElementById(horse.id).disabled = true
         const form = document.querySelectorAll(`span.${horse.attributes.name} > input`);

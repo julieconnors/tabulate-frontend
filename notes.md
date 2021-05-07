@@ -6,10 +6,16 @@ ERRORS
 
  refactor:
   - should some components be functional components?
-  - should fetching happen just once
-
-**Update Readme
+    I am using the render function to create variables to render in jsx
+  - should fetching happen just once **I have fetching happening for each react route
 
 **stretch goals: 
-  - include ride update
   - provide option to go back to a previous date and update rides
+      ride update needs:
+        - patch fetch request
+        - update action creator
+        - add edit action to backend controller
+
+**architecture questions
+ - fetching
+ - i have individual forms to add rides **would one form for all horses make more sense
