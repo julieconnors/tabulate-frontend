@@ -17,7 +17,11 @@ class ServicesForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.addService(this.state)
+        let service = {
+            label: this.state.label,
+            fee: parseInt(this.state.fee)
+        }
+        this.props.addService(service)
         this.setState({
             label: "",
             fee: 0
