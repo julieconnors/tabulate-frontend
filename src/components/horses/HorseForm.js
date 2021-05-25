@@ -17,9 +17,7 @@ class HorseForm extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault()
-        // dispatch action to add horse
-        
+        event.preventDefault()        
         this.props.addHorse(this.state) 
         // calling action creator to dispatch 
         this.setState({
