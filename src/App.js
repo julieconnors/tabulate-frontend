@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'; 
 import NavBar from './components/NavBar'
 import DaySheetContainer from './containers/DaySheetContainer';
@@ -7,11 +7,28 @@ import Home from './containers/Home'
 
 import 'bootstrap/dist/css/bootstrap.css';
 
-class App extends Component {
+function App() {
 
-  render() {
+    function switchMode() {
+      let toggleButton = document.querySelector('.toggle')
+      let background = document.querySelector('.App').style
+
+      if (background.backgroundColor ===  "black") {
+          background.backgroundColor = "white"
+        } else {
+          background.backgroundColor = "black"
+        }
+
+      if (toggleButton.innerText === "Dark Mode") {
+          toggleButton.innerText = "Light Mode"
+        } else {
+          toggleButton.innerText = "Dark Mode"
+        }
+      }
+
     return (
       <div className="App">
+        <button className={"toggle"} onClick={() => switchMode()}>Dark Mode</button>
         <Router>
           <NavBar />
             <Route exact path="/" component={Home}/>
@@ -20,8 +37,6 @@ class App extends Component {
         </Router>
       </div>
     );
-  }
-  
 }
 
 export default App;
