@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
@@ -15,8 +15,7 @@ const MenuDiv = styled.div`
         background-color: #4297A0;
         }
 `
-class NavBar extends Component {
-    render() {
+function NavBar() {
         return (
             <Container>
                 <Navbar>
@@ -28,7 +27,6 @@ class NavBar extends Component {
                 </Navbar>
             </Container>
         )
-    }
 }
 
 export default NavBar;
