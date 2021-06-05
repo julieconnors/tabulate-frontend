@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'; 
-import NavBar from './components/NavBar'
-import DaySheetContainer from './containers/DaySheetContainer';
-import StatementContainer from './containers/StatementContainer'
-import Home from './containers/Home'
+import Login from './components/Login'
+import Signup from './components/Signup'
+import Welcome from './components/Welcome'
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -29,12 +30,16 @@ function App() {
     return (
       <div className="App">
         <button className={"toggle"} onClick={() => switchMode()}>Dark Mode</button>
+        {/* <Welcome /> */}
         <Router>
-          <NavBar />
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/day-sheet" component={DaySheetContainer} />
-            <Route exact path="/statements" component={StatementContainer} />
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Signup</Link>
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+          </Switch>
         </Router>
+
       </div>
     );
 }
