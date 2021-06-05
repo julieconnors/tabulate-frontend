@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addHorse } from '../../actions/addHorse';
-
 class HorseForm extends Component {
 
     state = {
@@ -9,7 +8,6 @@ class HorseForm extends Component {
         owner: ""
     }
 
-    // arrow function syntax binds this to HorseForm component instead of handleChange function context
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -19,7 +17,6 @@ class HorseForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()        
         this.props.addHorse(this.state) 
-        // calling action creator to dispatch 
         this.setState({
             name: "",
             owner: ""
@@ -34,7 +31,6 @@ class HorseForm extends Component {
                             <label>Horse Name</label>
                             <input type="text" value={this.state.name} name="name" onChange={this.handleChange}/><br></br>
                             <label>Owner Name</label>
-                            {/* <Form.Control className="input" type="text" value={this.state.name} name="owner" onChange={this.handleChange}/> */}
                             <input type="text" value={this.state.owner} name="owner" onChange={this.handleChange}/><br></br>
                     
                         <input type="submit" value="Add Horse"/>
@@ -44,5 +40,4 @@ class HorseForm extends Component {
     }
 }
 
-// instead of mapping dispatch to props, I'm using connect to pass the action creator object which I'll then access via this.props
 export default connect(null, { addHorse })(HorseForm);
