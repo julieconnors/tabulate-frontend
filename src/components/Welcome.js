@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import Login from './Login'
 
-class Welcome extends Component {
-    render(){
+function Welcome(){
         return(
-            <h1>Tabulate</h1>
-
+            <div>
+                <Login />
+            </div>
         )
-    }
 }
+
  export default Welcome;
