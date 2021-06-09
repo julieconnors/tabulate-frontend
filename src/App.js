@@ -1,47 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Welcome from './components/Welcome'
+import Home from './containers/Home'
 import Login from './components/Login'
 import Signup from './components/Signup'
-import Welcome from './components/Welcome'
-
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
-import { Link } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.css';
+import { connect } from 'react-redux';
+class App extends Component {
 
-function App() {
+  setToken(userToken) {
+    sessionStorage.setItem('token', userToken);
+  }
+  
+  render(){
+    const currentUser = this.props.user.user
 
-    function switchMode() {
-      let toggleButton = document.querySelector('.toggle')
-      let background = document.querySelector('.App').style
-
-      if (background.backgroundColor ===  "black") {
-          background.backgroundColor = "white"
-        } else {
-          background.backgroundColor = "black"
-        }
-
-      if (toggleButton.innerText === "Dark Mode") {
-          toggleButton.innerText = "Light Mode"
-        } else {
-          toggleButton.innerText = "Dark Mode"
-        }
-      }
-
-    return (
-      <div className="App">
-        <button className={"toggle"} onClick={() => switchMode()}>Dark Mode</button>
-        {/* <Welcome /> */}
-        <Router>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link>
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-          </Switch>
-        </Router>
-
-      </div>
-    );
+    if (!!currentUser) {
+      return <Home/>
+    } else {
+      return (
+        <div className="App">
+          <h1>Welcome to Tabulate!</h1>          
+          <Router>
+            <Switch>
+              <Route path="/login"
+                render={() => (
+                  <Login setToken={() => this.setToken()}/>  
+                )}
+              />
+              <Route path="/signup" 
+                render={() => (
+                  <Signup setToken={() => this.setToken()}/>
+                  )}
+              />
+              <Route path="/" component={Welcome}/>
+            </Switch>
+          </Router>
+        </div>
+      )
+    }
+    }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(App);
