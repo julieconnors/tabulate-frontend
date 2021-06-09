@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { authenticateUser } from '../actions/authenticateUser';
 
 class Login extends Component {
 
@@ -15,7 +18,7 @@ class Login extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        debugger
+        this.props.authenticateUser(this.state)
     }
 
     render() {
@@ -30,9 +33,10 @@ class Login extends Component {
                     
                     <input type="submit" value="Login"/>
                 </form>
+                <Link to="/signup">Signup</Link>
             </div>
         )
     }
 }
 
-export default Login;
+export default connect(null, { authenticateUser })(Login);
