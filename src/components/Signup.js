@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addUser } from '../actions/addUser';
+import { Link } from 'react-router-dom'
+
 
 class Signup extends Component {
 
@@ -15,7 +19,21 @@ class Signup extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        debugger
+        const newUser = {
+            ...this.state
+        } 
+
+        this.props.addUser(newUser)
+        this.loginUser()
+        this.setState({
+            username: "",
+            password: ""
+        })
+    }
+
+    loginUser() {
+        let token = this.props.user.jwt
+        this.props.setToken(token)
     }
 
     render() {
@@ -30,9 +48,16 @@ class Signup extends Component {
                     
                     <input type="submit" value="Signup"/>
                 </form>
+                <Link to="/login">Login</Link>
             </div>
         )
     }
 }
 
-export default Signup;
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, { addUser })(Signup);
