@@ -9,8 +9,6 @@ export function addUser(data) {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(user => {
-            dispatch({ type: 'ADD_USER', payload: user })
-        })
+        .then(user => dispatch({ type: 'AUTH_USER', payload: user }))
     }
 }
