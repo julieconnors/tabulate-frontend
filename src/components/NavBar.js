@@ -1,11 +1,12 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar'
-import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import styled from '@emotion/styled'
 
 const MenuDiv = styled.div`
+    padding-left: 35%;
+    padding-right: 35%;
     .nav {
         color: black;
         font-weight: bold;
@@ -16,17 +17,15 @@ const MenuDiv = styled.div`
         }
 `
 function NavBar() {
-        return (
-            <Container>
-                <Navbar>
-                    <MenuDiv>
-                        <Button><NavLink to="/" className="nav">Home</NavLink></Button>
-                        <Button><NavLink to="/day-sheet" className="nav">Day Sheet</NavLink></Button>
-                        <Button><NavLink to="/statements" className="nav">Statements</NavLink></Button>
-                    </MenuDiv>
-                </Navbar>
-            </Container>
-        )
+    return (
+        <MenuDiv>
+            <Navbar>
+                <Button><Link to="/account" className="nav">Home</Link></Button>
+                <Button><Link to="/day-sheet" className="nav">Day Sheet</Link></Button>
+                <Button><Link to="/statements" className="nav">Statements</Link></Button>
+            </Navbar>
+        </MenuDiv>
+    )
 }
 
 export default NavBar;
