@@ -26,11 +26,7 @@ class App extends Component {
           <Router>
             <NavBar />
             <Switch>
-              <Route path="/account"
-                render={() => (
-                  <Home currentUser={currentUser} />  
-                )}
-              />
+              
               <Route path="/day-sheet"
                 render={() => (
                   <DaySheetContainer currentUser={currentUser} />  
@@ -39,6 +35,11 @@ class App extends Component {
               <Route path="/statements"
                 render={() => (
                   <StatementContainer currentUser={currentUser} />  
+                )}
+              />
+              <Route path="/"
+                render={() => (
+                  <Home currentUser={currentUser} />  
                 )}
               />
             </Switch>
