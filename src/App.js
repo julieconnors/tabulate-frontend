@@ -1,24 +1,50 @@
 import React, { Component } from 'react';
 import Welcome from './components/Welcome'
+import NavBar from './components/NavBar'
 import Home from './containers/Home'
 import Login from './components/Login'
 import Signup from './components/Signup'
+import DaySheetContainer from './containers/DaySheetContainer';
+import StatementContainer from './containers/StatementContainer'
+
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
 
 import 'bootstrap/dist/css/bootstrap.css';
-import { connect } from 'react-redux';
 class App extends Component {
 
   setToken(userToken) {
-    sessionStorage.setItem('token', userToken);
+    localStorage.setItem('token', userToken);
   }
   
   render(){
     const currentUser = this.props.user.user
 
     if (!!currentUser) {
-      return <Home/>
-    } else {
+      return (
+        <div>
+          <Router>
+            <NavBar />
+            <Switch>
+              <Route path="/account"
+                render={() => (
+                  <Home currentUser={currentUser} />  
+                )}
+              />
+              <Route path="/day-sheet"
+                render={() => (
+                  <DaySheetContainer currentUser={currentUser} />  
+                )}
+              />
+              <Route path="/statements"
+                render={() => (
+                  <StatementContainer currentUser={currentUser} />  
+                )}
+              />
+            </Switch>
+          </Router>
+        </div>
+      )} else {
       return (
         <div className="App">
           <h1>Welcome to Tabulate!</h1>          
