@@ -9,6 +9,6 @@ export function authenticateUser(data) {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(userData => dispatch({ type: 'AUTH_USER', payload: userData }))
     }
 }
