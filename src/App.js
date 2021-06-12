@@ -1,42 +1,78 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'; 
+import React, { Component } from 'react';
+import Welcome from './components/Welcome'
 import NavBar from './components/NavBar'
+import Home from './containers/Home'
+import Login from './components/Login'
+import Signup from './components/Signup'
 import DaySheetContainer from './containers/DaySheetContainer';
 import StatementContainer from './containers/StatementContainer'
-import Home from './containers/Home'
+
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
 
 import 'bootstrap/dist/css/bootstrap.css';
+class App extends Component {
 
-function App() {
+  setToken(userToken) {
+    localStorage.setItem('token', userToken);
+  }
+  
+  render(){
+    const currentUser = this.props.user.user
 
-    function switchMode() {
-      let toggleButton = document.querySelector('.toggle')
-      let background = document.querySelector('.App').style
-
-      if (background.backgroundColor ===  "black") {
-          background.backgroundColor = "white"
-        } else {
-          background.backgroundColor = "black"
-        }
-
-      if (toggleButton.innerText === "Dark Mode") {
-          toggleButton.innerText = "Light Mode"
-        } else {
-          toggleButton.innerText = "Dark Mode"
-        }
-      }
-
-    return (
-      <div className="App">
-        <button className={"toggle"} onClick={() => switchMode()}>Dark Mode</button>
-        <Router>
-          <NavBar />
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/day-sheet" component={DaySheetContainer} />
-            <Route exact path="/statements" component={StatementContainer} />
-        </Router>
-      </div>
-    );
+    if (!!currentUser) {
+      return (
+        <div>
+          <Router>
+            <NavBar />
+            <Switch>
+              <Route path="/account"
+                render={() => (
+                  <Home currentUser={currentUser} />  
+                )}
+              />
+              <Route path="/day-sheet"
+                render={() => (
+                  <DaySheetContainer currentUser={currentUser} />  
+                )}
+              />
+              <Route path="/statements"
+                render={() => (
+                  <StatementContainer currentUser={currentUser} />  
+                )}
+              />
+            </Switch>
+          </Router>
+        </div>
+      )} else {
+      return (
+        <div className="App">
+          <h1>Welcome to Tabulate!</h1>          
+          <Router>
+            <Switch>
+              <Route path="/login"
+                render={() => (
+                  <Login setToken={() => this.setToken()}/>  
+                )}
+              />
+              <Route path="/signup" 
+                render={() => (
+                  <Signup setToken={() => this.setToken()}/>
+                  )}
+              />
+              <Route path="/" component={Welcome}/>
+            </Switch>
+          </Router>
+        </div>
+      )
+    }
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(App);

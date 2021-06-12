@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Services from '../components/services/Services';
 import ServicesForm from '../components/services/ServicesForm';
-import { connect } from 'react-redux';
-import { fetchServices } from '../actions/fetchServices';
 import styled from '@emotion/styled'
 
 const DisplayDiv = styled.div`
@@ -28,34 +26,13 @@ const DisplayDiv = styled.div`
         }
     }
 `
-class ServicesContainer extends Component {
-    
-    componentDidMount() {
-        this.props.fetchServices()
-    }
-    
-    render() {
-        return (
-            <DisplayDiv className="container">
-                <ServicesForm/>
-                <Services services={this.props.services} />
-            </DisplayDiv>
-        )
-    }
+const ServicesContainer = (props) => {
+    return (
+        <DisplayDiv className="container">
+            <ServicesForm/>
+            <Services services={props.services} />
+        </DisplayDiv>
+    )
 }
 
-const mapStateToProps = state => {
-    return {
-        services: state.services
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchServices: () => {
-            dispatch(fetchServices())
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ServicesContainer);
+export default ServicesContainer;

@@ -68,8 +68,7 @@ class DaySheetContainer extends Component {
                     </div>
             </DaySheet>
         )
-    }
-    
+    }  
 }
 
 const mapStateToProps = state => {

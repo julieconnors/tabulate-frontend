@@ -6,8 +6,8 @@ class Horses extends Component {
         const horseList = this.props.horses.map(horse => {
             return (
                 <tr key={horse.id}>
-                    <td>{horse.attributes.name}</td>
-                    <td>{horse.attributes.owner.name}</td>
+                    <td>{horse.name}</td>
+                    {/* <td>{horse.owner.name}</td> */}
                 </tr>
             )
         })

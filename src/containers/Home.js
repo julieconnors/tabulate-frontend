@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import HorseContainer from './HorseContainer';
 import ServicesContainer from './ServicesContainer';
-// import ErrorBoundary from '../components/ErrorBoundary'
 
-const Home = () => (
-    <div>
-        {/* <ErrorBoundary> */}
-            <HorseContainer />
-            <ServicesContainer />
-        {/* </ErrorBoundary> */}
-    </div>
-)
+class Home extends Component {
+    render(){
+        const currentUser = this.props.currentUser.data.attributes
+        const horses = currentUser.horses
+        const services = currentUser.services
 
+        return(
+            <div>
+                <HorseContainer horses={horses} />
+                <ServicesContainer services={services}/>
+            </div>
+        )
+    }
+}
+    
 export default Home;
