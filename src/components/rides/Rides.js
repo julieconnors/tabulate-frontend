@@ -13,7 +13,6 @@ const TodaysRides = styled.div`;
     }
 `
 class Rides extends Component {
-
     render() {
         const filteredRides = this.props.rides.filter(ride => ride.attributes.date === this.props.date)
 
@@ -22,6 +21,8 @@ class Rides extends Component {
                 <div className="tr" key={ride.id}>
                     <span className='td'>{ride.attributes.horse.name}</span>
                     <span className='td'>{ride.attributes.service.label}</span>
+                    <span className='td'><button>Edit</button></span>
+                    <span className='td'><button>Delete</button></span>
                 </div>)
     })
         return (
