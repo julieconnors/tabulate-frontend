@@ -1,4 +1,5 @@
 import Login from './Login'
+import '../App.css'
 
 function Welcome(){
     return(

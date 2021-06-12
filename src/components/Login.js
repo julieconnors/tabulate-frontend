@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { authenticateUser } from '../actions/authenticateUser';
+import '../App.css'
+
 
 class Login extends Component {
 
@@ -23,8 +25,8 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Login</h1>
+            <div className="welcome">
+                <h3>Login</h3>
                 <form onSubmit={this.handleSubmit}>
                     <label>Username</label>
                         <input type="username" value={this.state.username} name="username" onChange={this.handleChange}/><br></br>
@@ -33,7 +35,7 @@ class Login extends Component {
                     
                     <input type="submit" value="Login"/>
                 </form>
-                <Link to="/signup">Signup</Link>
+                <Link className="link" to="/signup">Signup</Link>
             </div>
         )
     }

@@ -1,0 +1,20 @@
+.App {
+    text-align: center;
+    margin: 2%;
+}
+
+body{
+    background-color: #F4EAE6;
+}
+
+.welcome {
+    padding: 3%;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: #4297A0;
+}
+
+.link {
+    color: white;
+    text-decoration: underline;
+}

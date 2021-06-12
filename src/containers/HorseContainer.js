@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Horses from '../components/horses/Horses'
 import HorseForm from '../components/horses/HorseForm'
-// import { connect } from 'react-redux'
-// import { fetchHorses } from '../actions/fetchHorses'
 import styled from '@emotion/styled'
 
 const HorseDiv = styled.div`
@@ -30,10 +28,6 @@ const HorseDiv = styled.div`
 `
 class HorseContainer extends Component {
 
-    // componentDidMount() {
-    //     this.props.fetchHorses()
-    // }
-
     render() {
         return (
             <HorseDiv className="container">
@@ -43,20 +37,5 @@ class HorseContainer extends Component {
         )
     }
 }
-
-// const mapStateToProps = state => {
-//     return {
-//         horses: state.horses
-//     }
-// }
-
-// connect provides access to redux's dispatch function
-// dispatch is passed to mapDispatchToProps
-// mapDispatchToProps returns an object with a fetchHorses key set to an anonymous arrow function 
-// which calls the dispatch function with the return value of the fetchHorses action creator
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         fetchHorses: () => {
  
-
 export default HorseContainer;
