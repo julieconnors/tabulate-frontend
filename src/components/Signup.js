@@ -24,16 +24,10 @@ class Signup extends Component {
         } 
 
         this.props.addUser(newUser)
-        this.loginUser()
         this.setState({
             username: "",
             password: ""
         })
-    }
-
-    loginUser() {
-        let token = this.props.user.jwt
-        this.props.setToken(token)
     }
 
     render() {
