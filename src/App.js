@@ -13,12 +13,34 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 class App extends Component {
 
-  setToken(userToken) {
-    localStorage.setItem('token', userToken);
+  state = {
+    user: ""
+  }
+
+  async findUser() {
+    const id = localStorage.getItem('id')
+      const res = await fetch(`http://localhost:3001/api/v1/users/${id}`); 
+      const json = await res.json()
+      this.setState({
+        user: json.user.data.attributes
+      })
+  }
+
+  setUser() {
+    if(this.props.user.user || this.state.user) {
+      let currentUser = (this.props.user.user) ? this.props.user.user : this.state.user
+      return currentUser
+    } else if(localStorage.getItem('token') && this.state.user === "") {
+      this.findUser()
+      return this.state.user
+    } else {
+      let currentUser = ""
+      return currentUser
+    }
   }
   
   render(){
-    const currentUser = this.props.user.user
+    const currentUser = this.setUser()
 
     if (!!currentUser) {
       return (
@@ -28,17 +50,17 @@ class App extends Component {
             <Switch>
               
               <Route path="/day-sheet"
-                render={() => (
+                render={(props) => (
                   <DaySheetContainer currentUser={currentUser} />  
                 )}
               />
               <Route path="/statements"
-                render={() => (
+                render={(props) => (
                   <StatementContainer currentUser={currentUser} />  
                 )}
               />
               <Route path="/"
-                render={() => (
+                render={(props) => (
                   <Home currentUser={currentUser} />  
                 )}
               />
@@ -53,12 +75,12 @@ class App extends Component {
             <Switch>
               <Route path="/login"
                 render={() => (
-                  <Login setToken={() => this.setToken()}/>  
+                  <Login />  
                 )}
               />
               <Route path="/signup" 
                 render={() => (
-                  <Signup setToken={() => this.setToken()}/>
+                  <Signup />
                   )}
               />
               <Route path="/" component={Welcome}/>
