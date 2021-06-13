@@ -13,7 +13,6 @@ export function addUser(data) {
             localStorage.setItem('token', userData.jwt)
             localStorage.setItem('id', userData.user.data.id)
             dispatch({ type: 'AUTH_USER', payload: userData })
-            return userData
         })
     }
 }
