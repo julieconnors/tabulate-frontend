@@ -3,8 +3,9 @@ import HorseContainer from './HorseContainer';
 import ServicesContainer from './ServicesContainer';
 
 class Home extends Component {
+
     render(){
-        const currentUser = this.props.currentUser.data.attributes
+        const currentUser = this.props.currentUser
         const horses = currentUser.horses
         const services = currentUser.services
 
@@ -12,6 +13,7 @@ class Home extends Component {
             <div>
                 <HorseContainer horses={horses} />
                 <ServicesContainer services={services}/>
+                <button>Logout</button>
             </div>
         )
     }
