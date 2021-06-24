@@ -41,14 +41,12 @@ class App extends Component {
   }
 
   setUser() {
-    if(this.props.user.user || !!this.state.user.keys) {
-      let currentUser = this.props.user.user ? this.props.user.user.data.attributes : this.state.user
+    if(this.props.user.user) {
+      let currentUser = this.props.user.user.data.attributes
       return currentUser
-    } else if(localStorage.getItem('token') && !this.state.username) {
+    } else if(localStorage.getItem('token') && !this.props.user.user) {
       const id = localStorage.getItem('id')
       this.props.findUser(id)
-      let currentUser = this.state.user
-      return currentUser
     } else {
       let currentUser = ""
       return currentUser

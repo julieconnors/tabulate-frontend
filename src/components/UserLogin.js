@@ -7,10 +7,10 @@ import '../App.css'
 
 class UserLogin extends Component {
 
-    state = {
-        username: "",
-        password: ""
-    }
+    // state = {
+    //     username: "",
+    //     password: ""
+    // }
 
     // handleChange = (event) => {
     //     this.setState({
