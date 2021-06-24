@@ -17,7 +17,7 @@ class Horses extends Component {
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Owner</th>
+                        {/* <th>Owner</th> */}
                     </tr>
                 </thead>
                 <tbody>

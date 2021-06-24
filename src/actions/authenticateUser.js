@@ -9,6 +9,10 @@ export function authenticateUser(data) {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(userData => dispatch({ type: 'AUTH_USER', payload: userData }))
+        .then(userData => {
+            localStorage.setItem('token', userData.jwt)
+            localStorage.setItem('id', userData.user.data.id)
+            dispatch({ type: 'AUTH_USER', payload: userData })
+        })
     }
 }

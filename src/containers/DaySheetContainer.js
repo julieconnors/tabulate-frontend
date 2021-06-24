@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RideForm from '../components/rides/RideForm'
+import RideFormContainer from './RideFormContainer'
 import Rides from '../components/rides/Rides'
 import { fetchRides } from '../actions/fetchRides'
 import { fetchHorses } from '../actions/fetchHorses'
@@ -7,7 +7,7 @@ import { fetchServices } from '../actions/fetchServices'
 import { connect } from 'react-redux';
 import styled from '@emotion/styled'
 
-const DaySheet = styled.div`;
+const DaySheet = styled.div`
     background-color: #F4EAE6;
     text-align: center;
     padding: 1%;
@@ -49,7 +49,10 @@ class DaySheetContainer extends Component {
     }
 
     render() {
-        const horseList = this.props.horses.map(horse => <RideForm key={horse.id} horse={horse} horses={this.props.horses} date={this.today()} services={this.props.services}/>)
+        const horseList = this.props.horses.map(horse => {
+            
+            return <RideFormContainer key={horse.id} horse={horse} horses={this.props.horses} date={this.today()} services={this.props.services}/>
+        })
 
         const servicesHeadings = this.props.services.map(option => <span className="th" key={option.id}>{option.attributes.label}</span>)
 
@@ -62,9 +65,9 @@ class DaySheetContainer extends Component {
                                 <span className="th">Horse</span>
                                 {servicesHeadings}
                             </div>
-                        {horseList}
+                            {horseList}
                         </div>
-                            <Rides rides={this.props.rides} date={this.today()}/>
+                        <Rides rides={this.props.rides} date={this.today()}/>
                     </div>
             </DaySheet>
         )

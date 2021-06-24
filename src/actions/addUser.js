@@ -9,6 +9,10 @@ export function addUser(data) {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(user => dispatch({ type: 'AUTH_USER', payload: user }))
+        .then(userData => {
+            localStorage.setItem('token', userData.jwt)
+            localStorage.setItem('id', userData.user.data.id)
+            dispatch({ type: 'AUTH_USER', payload: userData })
+        })
     }
 }

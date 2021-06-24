@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addUser } from '../actions/addUser';
 import { Link } from 'react-router-dom'
-
+import '../App.css'
 
 class Signup extends Component {
 
@@ -24,22 +24,16 @@ class Signup extends Component {
         } 
 
         this.props.addUser(newUser)
-        this.loginUser()
         this.setState({
             username: "",
             password: ""
         })
     }
 
-    loginUser() {
-        let token = this.props.user.jwt
-        this.props.setToken(token)
-    }
-
     render() {
         return (
-            <div>
-                <h1>Signup</h1>
+            <div className="welcome">
+                <h3>Signup</h3>
                 <form onSubmit={this.handleSubmit}>
                     <label>Username</label>
                         <input type="username" value={this.state.username} name="username" onChange={this.handleChange}/><br></br>
@@ -48,7 +42,7 @@ class Signup extends Component {
                     
                     <input type="submit" value="Signup"/>
                 </form>
-                <Link to="/login">Login</Link>
+                <Link className="link" to="/login">Login</Link>
             </div>
         )
     }
