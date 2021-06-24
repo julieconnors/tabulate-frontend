@@ -32,7 +32,7 @@ class HorseContainer extends Component {
         return (
             <HorseDiv className="container">
                 <Horses horses={this.props.horses}/>
-                <HorseForm/>
+                <HorseForm currentUser={this.props.currentUser}/>
             </HorseDiv>
         )
     }
