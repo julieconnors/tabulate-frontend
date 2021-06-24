@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import Welcome from './components/Welcome'
 import NavBar from './components/NavBar'
 import Home from './containers/Home'
-import Login from './components/Login'
+import UserLogin from './components/UserLogin'
 import Signup from './components/Signup'
+import { authenticateUser } from './actions/authenticateUser';
+import { findUser } from './actions/findUser';
+import { logoutUser } from './actions/logoutUser';
+
 import DaySheetContainer from './containers/DaySheetContainer';
 import StatementContainer from './containers/StatementContainer'
 
@@ -13,30 +16,48 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 class App extends Component {
 
-  state = {
-    user: ""
+  constructor() {
+    super()
+    this.state = {
+      user: {},
+      username: "",
+      password: ""
+    }
   }
 
-  async findUser() {
-    const id = localStorage.getItem('id')
-      const res = await fetch(`http://localhost:3001/api/v1/users/${id}`); 
-      const json = await res.json()
-      this.setState({
-        user: json.user.data.attributes
-      })
+  handleChange = (event) => {
+    this.setState({
+          [event.target.name]: event.target.value.trim()
+    })
+}
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    let user = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    this.props.authenticateUser(user)
   }
 
   setUser() {
-    if(this.props.user.user || this.state.user) {
-      let currentUser = (this.props.user.user) ? this.props.user.user.data.attributes : this.state.user
+    if(this.props.user.user || !!this.state.user.keys) {
+      let currentUser = this.props.user.user ? this.props.user.user.data.attributes : this.state.user
       return currentUser
-    } else if(localStorage.getItem('token') && this.state.user === "") {
-      this.findUser()
-      return this.state.user
+    } else if(localStorage.getItem('token') && !this.state.username) {
+      const id = localStorage.getItem('id')
+      this.props.findUser(id)
+      let currentUser = this.state.user
+      return currentUser
     } else {
       let currentUser = ""
       return currentUser
     }
+  }
+
+  handleLogout = () => {
+    localStorage.removeItem('token')
+    this.props.logoutUser()
   }
   
   render(){
@@ -61,7 +82,7 @@ class App extends Component {
               />
               <Route path="/"
                 render={(props) => (
-                  <Home currentUser={currentUser} />  
+                  <Home currentUser={currentUser} handleLogout={this.handleLogout.bind(this)} />  
                 )}
               />
             </Switch>
@@ -73,17 +94,16 @@ class App extends Component {
           <h1>Welcome to Tabulate!</h1>          
           <Router>
             <Switch>
-              <Route path="/login"
-                render={() => (
-                  <Login />  
-                )}
-              />
               <Route path="/signup" 
                 render={() => (
                   <Signup />
                   )}
               />
-              <Route path="/" component={Welcome}/>
+              <Route path="/"
+                render={() => (
+                  <UserLogin handleSubmit={this.handleSubmit.bind(this)} handleChange={this.handleChange.bind(this)} username={this.props.username} password={this.props.password} />  
+                )}
+              />
             </Switch>
           </Router>
         </div>
@@ -98,4 +118,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { authenticateUser, logoutUser, findUser })(App);
