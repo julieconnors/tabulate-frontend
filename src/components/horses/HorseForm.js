@@ -15,8 +15,13 @@ class HorseForm extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault()        
-        this.props.addHorse(this.state) 
+        debugger
+        event.preventDefault()
+        const horse = {
+            ...this.state,
+            userId: localStorage.id
+        }        
+        this.props.addHorse(horse) 
         this.setState({
             name: "",
             owner: ""
