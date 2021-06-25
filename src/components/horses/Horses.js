@@ -6,8 +6,8 @@ class Horses extends Component {
         const horseList = this.props.horses.map(horse => {
             return (
                 <tr key={horse.id}>
-                    <td>{horse.name}</td>
-                    {/* <td>{horse.owner.name}</td> */}
+                    <td>{horse.attributes.name}</td>
+                    <td>{horse.attributes.owner.name}</td>
                 </tr>
             )
         })
@@ -17,7 +17,7 @@ class Horses extends Component {
                 <thead>
                     <tr>
                         <th>Name</th>
-                        {/* <th>Owner</th> */}
+                        <th>Owner</th>
                     </tr>
                 </thead>
                 <tbody>

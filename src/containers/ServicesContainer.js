@@ -30,14 +30,24 @@ const DisplayDiv = styled.div`
 `
 class ServicesContainer extends Component {
 
+    componentDidMount() {
+        this.props.fetchServices()
+    }
+
     render() {
         return (
             <DisplayDiv className="container">
-                <ServicesForm/>
+                <ServicesForm />
                 <Services services={this.props.services} />
             </DisplayDiv>
         )
     }
 }
 
-export default connect(null, { fetchServices })(ServicesContainer);
+const mapStateToProps = (state) => {
+    return {
+        services: state.services
+    }
+}
+
+export default connect(mapStateToProps, { fetchServices })(ServicesContainer);

@@ -15,7 +15,6 @@ class HorseForm extends Component {
     }
 
     handleSubmit = (event) => {
-        debugger
         event.preventDefault()
         const horse = {
             ...this.state,
