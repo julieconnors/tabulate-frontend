@@ -6,8 +6,8 @@ class Services extends Component {
         const optionsList = this.props.services.map(option => {
             return (
                 <tr key={option.id}>
-                    <td>{option.label}</td>
-                    <td>{option.fee}</td>
+                    <td>{option.attributes.label}</td>
+                    <td>{option.attributes.fee}</td>
                 </tr>
             )
         })
