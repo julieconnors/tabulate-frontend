@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchHorses } from '../actions/fetchHorses';
 import Horses from '../components/horses/Horses'
 import HorseForm from '../components/horses/HorseForm'
 import styled from '@emotion/styled'
@@ -28,6 +30,10 @@ const HorseDiv = styled.div`
 `
 class HorseContainer extends Component {
 
+    componentDidMount() {
+        this.props.fetchHorses()
+    }
+
     render() {
         return (
             <HorseDiv className="container">
@@ -37,5 +43,11 @@ class HorseContainer extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+      horses: state.horses
+    }
+  }
  
-export default HorseContainer;
+export default connect(mapStateToProps, { fetchHorses })(HorseContainer);
