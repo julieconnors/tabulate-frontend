@@ -19,7 +19,8 @@ class ServicesForm extends Component {
         event.preventDefault()
         let service = {
             label: this.state.label,
-            fee: parseInt(this.state.fee)
+            fee: parseInt(this.state.fee),
+            userId: localStorage.id
         }
         this.props.addService(service)
         this.setState({
